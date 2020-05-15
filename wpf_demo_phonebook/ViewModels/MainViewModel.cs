@@ -47,6 +47,7 @@ namespace wpf_demo_phonebook.ViewModels
         public RelayCommand GetContactsCommand { get; set; }
         public RelayCommand EditContactCommand { get; set; }
         public RelayCommand RemoveContactCommand { get; set; }
+        public RelayCommand AddContactCommand { get; set; }
 
         public MainViewModel()
         {
@@ -55,6 +56,8 @@ namespace wpf_demo_phonebook.ViewModels
             GetContactsCommand = new RelayCommand(GetContacts);
             EditContactCommand = new RelayCommand(EditContact);
             RemoveContactCommand = new RelayCommand(RemoveContact);
+            AddContactCommand = new RelayCommand(AddContact);
+
 
             GetContacts(null);
 
@@ -126,6 +129,15 @@ namespace wpf_demo_phonebook.ViewModels
                 Contacts.Remove(SelectedContact);
 
             }
+
+        }
+
+        private void AddContact(object parameter)
+        {
+
+            ContactModel contact = new ContactModel();
+
+            SelectedContact = contact;
 
         }
 

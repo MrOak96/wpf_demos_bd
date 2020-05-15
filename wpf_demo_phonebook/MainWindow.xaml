@@ -24,14 +24,12 @@
                     <MenuItem Header="Coller"/>
                 </MenuItem>
                 <MenuItem Header="Enregistrement">
-                    <MenuItem Header="Nouveau contact"/>
+                    <MenuItem Header="Nouveau contact" Command="{Binding AddContactCommand}"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
         <ToolBar DockPanel.Dock="Top">
-            <Button  Grid.Row="0" Grid.Column="2" Content="Nouveau contact" 
-                    Command="{Binding  AddContactCommand}" 
-                    CommandParameter="{Binding SelectedCustomer}" />
+            <Button  Grid.Row="0" Grid.Column="2" Content="Nouveau contact" Command="{Binding AddContactCommand}"/>
             <Separator/>
             <TextBlock Text="Recherche : " Margin="4"/>
             <TextBox x:Name="txtCriteria" HorizontalAlignment="Right" Width="150"/>
