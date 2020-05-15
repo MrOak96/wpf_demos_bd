@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_demo_phonebook"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="400" Width="800">
+        Title="MainWindow" MinHeight="200" Width="800">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
             <Menu>
@@ -23,10 +23,8 @@
                     <MenuItem Header="Copier"/>
                     <MenuItem Header="Coller"/>
                 </MenuItem>
-                <MenuItem Header="Affichage">
-                    <MenuItem Header="Fonction 1"/>
-                    <MenuItem Header="Fonction 2"/>
-                    <MenuItem Header="Fonction 3"/>
+                <MenuItem Header="Enregistrement">
+                    <MenuItem Header="Nouveau contact"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
@@ -56,7 +54,7 @@
             </Grid.RowDefinitions>
             <ListView Grid.Row="1" ItemsSource="{Binding Contacts}"
                           SelectedItem="{Binding SelectedContact}"
-                          x:Name="lvContact" Height="260px"  >
+                          x:Name="lvContact" Height="300px">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Info}"/>
