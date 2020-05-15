@@ -110,5 +110,19 @@ namespace wpf_demo_phonebook
             return nbAdd;
         }
 
+        public static void EditContact(ContactModel _cm)
+        {
+
+            dao.Edit(_cm.ContactID, _cm);
+
+        }
+
+        public static void RemoveContact(ContactModel _cm)
+        {
+
+            dao.Remove(_cm.ContactID);
+
+        }
+
     }
 }

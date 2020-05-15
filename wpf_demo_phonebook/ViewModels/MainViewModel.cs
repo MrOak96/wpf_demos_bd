@@ -45,12 +45,16 @@ namespace wpf_demo_phonebook.ViewModels
 
         public RelayCommand SearchContactCommand { get; set; }
         public RelayCommand GetContactsCommand { get; set; }
+        public RelayCommand EditContactCommand { get; set; }
+        public RelayCommand RemoveContactCommand { get; set; }
 
         public MainViewModel()
         {
 
             SearchContactCommand = new RelayCommand(SearchContact);
             GetContactsCommand = new RelayCommand(GetContacts);
+            EditContactCommand = new RelayCommand(EditContact);
+            RemoveContactCommand = new RelayCommand(RemoveContact);
 
             GetContacts(null);
 
@@ -102,6 +106,27 @@ namespace wpf_demo_phonebook.ViewModels
         private void GetContacts(object parameter)
         {
             Contacts = PhoneBookBusiness.GetContacts();
+        }
+
+        private void EditContact(object parameter)
+        {
+
+            PhoneBookBusiness.EditContact(SelectedContact);
+
+        }
+
+        private void RemoveContact(object parameter)
+        {
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                PhoneBookBusiness.RemoveContact(SelectedContact);
+                Contacts.Remove(SelectedContact);
+
+            }
+
         }
 
     }

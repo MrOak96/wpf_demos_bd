@@ -95,11 +95,9 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Right">
             <Button Margin="5" Content="Enregistrer"
-                Command="{Binding SaveContactCommand}"
-                CommandParameter="{Binding SelectedContact}"/>
+                Command="{Binding EditContactCommand}"/>
             <Button Margin="5" Content="Supprimer"
-                Command="{Binding DeleteContactCommand}"
-                CommandParameter="{Binding SelectedContact}"/>
+                Command="{Binding RemoveContactCommand}"/>
         </StackPanel>
 
         </Grid>
