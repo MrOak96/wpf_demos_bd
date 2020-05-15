@@ -55,5 +55,27 @@ namespace wpf_demo_phonebook
 
             return conn.ExecuteSelectQuery(_query, parameters);
         }
+
+        public DataTable GetAll()
+        {
+            string _query =
+                $"SELECT * " +
+                $"FROM [Contacts] ";
+
+            return conn.ExecuteSelectQuery(_query, null);
+        }
+
+        public int Add(ContactModel cm)
+        {
+            // 
+            string _query =
+                $"Insert " +
+                $"Into [Contacts] (FirstName, LastName, Email, Phone, Mobile) " +
+                $"OUTPUT INSERTED.ContactID " +
+                $"Values ('{cm.FirstName}­', '{cm.LastName}', '{cm.Email}', '{cm.Phone}', '{cm.Mobile}')";
+
+            return conn.ExecuteInsertQuery(_query, null);
+        }
+
     }
 }

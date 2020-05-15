@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Text;
 
@@ -47,6 +48,25 @@ namespace wpf_demo_phonebook
             return cm;
         }
 
+        public static ObservableCollection<ContactModel> GetContacts()
+        {
+            ContactModel cm;
+            ObservableCollection<ContactModel> contacts = new ObservableCollection<ContactModel>();
+            DataTable dt = new DataTable();
+
+            dt = dao.GetAll();
+
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    cm = RowToContactModel(row);
+                    contacts.Add(cm);
+                }
+            }
+            return contacts;
+        }
+
         private static ContactModel RowToContactModel(DataRow row)
         {
             ContactModel cm = new ContactModel();
@@ -60,5 +80,14 @@ namespace wpf_demo_phonebook
 
             return cm;
         }
+
+        public static int AddContact(ContactModel _cm)
+        {
+            int nbAdd = 0;
+            nbAdd = dao.Add(_cm);
+
+            return nbAdd;
+        }
+
     }
 }
